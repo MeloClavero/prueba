@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+    margin: 0;
+}
+
+
+/* desplazamiento contenedor */
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+/* cuerpo */
+body {
+    min-height: 100vh;
+    /* altura minima */
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* !ver STYLES */
+:root {
+    --blue: #335DFF;
+    --grey: #F5F5F5;
+    --grey-d-1: #EEE;
+    --grey-d-2: #DDD;
+    --grey-d-3: #888;
+    --white: #FFF;
+    --dark: #222;
+}
+
+
+
+/*! CHATBOX */
+/* Posicion del chat */
+.chatbox-wrapper {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    width: 4rem;
+    height: 4rem;
+}
+
+/* Boton del chat */
+.chatbox-toggle {
+    width: 100%;
+    height: 100%;
+    background: #F4A031;
+    color: white;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .2s;
+}
+
+/* Retroalimentacion visual del boton */
+.chatbox-toggle:active {
+    transform: scale(.8);
+}
+
+
+/* contenedor */
+.chatbox-message-wrapper {
+    position: absolute;
+    bottom: calc(100% + 1rem);
+    right: 0;
+    width: 350px;
+    /* tamaño del chat */
+    border-radius: 0.5rem;
+    overflow: hidden;
+    /* para que no desborde */
+    box-shadow: .5rem .5rem 2rem rgba(0, 0, 0, .1);
+    transform: scale(0);
+    /* ocultar contenedor */
+    transform-origin: bottom right;
+    transition: .2s;
+}
+
+.chatbox-message-wrapper.show {
+    transform: scale(1);
+    /* que se muestre al 100 cuando está visible */
+}
+
+/* Cabecera */
+.chatbox-message-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Distribuye los elementos horizontalmente, con espacios iguales entre ellos */
+    background: white;
+    padding: .7rem .7rem;
+}
+
+/* cabecera centrado */
+.chatbox-message-profile {
+    display: flex;
+    align-items: center;
+    grid-gap: .5rem;
+}
+
+
+/* imagen de perfil */
+.chatbox-message-image {
+    width: 3.5rem;
+    height: 3.5rem;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+
+/* Nombre del asistente */
+.chatbox-message-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* online */
+.chatbox-message-status {
+    font-size: .8rem;
+    color: grey;
+}
+
+.chatbox-message-content {
+    background: rgba(128, 128, 128, 0.068);
+    display: flex;
+    flex-direction: column;
+    grid-row-gap: .8rem;
+    max-height: 350px;
+    overflow-y: scroll;
+}
+
+
+.chatbox-message-status {
+    font-size: 0.8rem;
+    /* Tamaño de fuente */
+    color: #888;
+    /* Color del texto */
+    margin-left: 1px;
+    /* Espaciado izquierdo */
+}
+
+
+
+
+/* CHATBOX */
+
+
+/* BREAKPOINTS */
+@media screen and (max-width: 576px) {
+    .chatbox-message-wrapper {
+        width: calc(100vw - 2rem);
+    }
+
+    .chatbox-wrapper {
+        bottom: 1rem;
+        right: 1rem;
+    }
+}
+
+/* BREAKPOINTS */
+
+.sub-options {
+
+    margin-top: 10px;
+}
+
+.received-message {
+    background-color: #cfcdbf;
+    color: #353636;
+    border-radius: 20px 20px 20px 4px;
+    /* Borde redondeado */
+    align-self: flex-start;
+    display: inline-block;
+    width: 91%;
+    padding: 10px 10px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+
+}
+
+.sent-message {
+    background-color: #3498db;
+    color: #fff;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    padding: 10px 15px;
+    border-radius: 20px 20px 4px 20px;
+    /* Borde redondeado */
+    align-self: flex-end;
+    display: inline-block;
+    width: auto;
+}
+
+
+.show {
+    display: block;
+}
+
+/* .option-button{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 5px;
+    font: inherit;    
+} */
+
+.option-button {
+    background: #cfcdbf;
+    color: #090909;
+    border: none;
+    position: relative;
+    width: 100%;
+    font: inherit;
+    cursor: pointer;
+    margin-bottom: 5px;
+    transition: 400ms ease all;
+    outline: none;
+}
+
+.option-button:hover {
+    background: #fff;
+    color: #1AAB8A;
+}
+
+.option-button::before, .option-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    background: #1AAB8A;
+    transition: 400ms ease all;
+}
+
+.option-button::after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+}
+
+.option-button:hover::before, .option-button:hover::after {
+    width: 100%;
+    transition: 800ms ease all;
+}
